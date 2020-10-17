@@ -60,6 +60,22 @@
     }
   }
 
+  class Place {
+    constructor(x, y, ctx) {
+      this.x = x;
+      this.y = y;
+      this.ctx = ctx;
+    }
+
+    draw() {
+      this.ctx.beginPath();
+      this.ctx.arc(this.x, this.y, 10, 0, Math.PI*2);
+      this.ctx.fillStyle = "#0095DD";
+      this.ctx.fill();
+      this.ctx.closePath();
+    }
+  }
+
   window.addEventListener("load", init);
 
   /**
@@ -75,9 +91,11 @@
       var ctx = canvas.getContext('2d');
       // drawing code here
       const player = new Player(50, 50, ctx);
+      const computer = new Place(100, 100, ctx);
       setInterval(() => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         player.draw();
+        computer.draw();
       }, 10);
       document.addEventListener("keydown", (e) => {
         player.move(e.code);
