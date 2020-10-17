@@ -14,7 +14,15 @@
    * clicked or submitted.
    */
   function init() {
-    id("login-form").addEventListener("submit", playGame);
+    let canvas = id('gameboard');
+
+    if (canvas.getContext) {
+      var ctx = canvas.getContext('2d');
+      // drawing code here
+    } else {
+      // canvas-unsupported code here
+      canvas.classList.add("hidden");
+    }
   }
 
   /**
@@ -22,8 +30,8 @@
    * @param {event} evnt - event of submitting the submit button
    */
   function playGame(evnt) {
-    id("login").classList.add("hidden");
-    id("game").classList.remove("hidden");
+    //id("login").classList.add("hidden");
+    //id("game").classList.remove("hidden");
 
   }
 
