@@ -1,10 +1,5 @@
-/*
- * Name: Tyler Wong
- * Date: August 26, 2020
- *
- * This is the JS to implement
- */
-
+/* dubhacks
+*/
 "use strict";
 
 /**
@@ -29,6 +24,7 @@
   function playGame(evnt) {
     id("login").classList.add("hidden");
     id("game").classList.remove("hidden");
+
   }
 
 
