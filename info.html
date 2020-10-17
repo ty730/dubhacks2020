@@ -12,11 +12,35 @@
       <h1 id = 'pagetitle'>Voting game</h1>
       <form id = 'form'>
           <label for = 'name'>Name:</label>
-          <input id = 'name' name = 'name' type = 'text' required>
+          <input id = 'name' name = 'name' type = 'text' required><br>
           <label for = "Date of Birth">Date of Birth:</label>
-          <input id = 'dob' name = 'dob' type = 'text' required>
+          <input list = "months" placeholder = "Month" required>
+          <datalist id = "months">
+            <option value = "January">
+            <option value = "February">
+            <option value = "March">
+            <option value = "April">
+            <option value = "May">
+            <option value = "June">
+            <option value = "July">
+            <option value = "August">
+            <option value = "September">
+            <option value = "October">
+            <option value = "November">
+            <option value = "December">
+          </datalist><br>
           <label for = 'location'>Location:</label>
-          <input id = 'location' name = 'location' type = 'text' required>
+          <input list = 'location' list = 'location' placeholder = "State" required>
+          <datalist id = 'location'>
+            <option value = "HUB">
+            <option value = "ODE">
+            <option value = "SUZ">
+            <option value = "MGH">
+          </datalist> <br>
+          <label for = "purple"> Party Affiliation:</label>   
+          <input type = "radio" id = "purple" name = "browser" value = 'Purple'>Purple
+          
+          <input type = "radio" id = "gold" name = 'browser' value = 'Gold'> Gold
           <button id = 'input' for = 'form'>SEARCH</button>
           
       </form>
