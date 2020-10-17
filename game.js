@@ -70,7 +70,7 @@
     draw() {
       this.ctx.beginPath();
       this.ctx.arc(this.x, this.y, 10, 0, Math.PI*2);
-      this.ctx.fillStyle = "#0095DD";
+      this.ctx.fillStyle = "#DD00DD";
       this.ctx.fill();
       this.ctx.closePath();
     }
@@ -94,6 +94,9 @@
       const computer = new Place(100, 100, ctx);
       setInterval(() => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (Math.abs(player.x - computer.x) < 10 && Math.abs(player.y - computer.y) < 10) {
+          regToVote();
+        }
         player.draw();
         computer.draw();
       }, 10);
@@ -107,6 +110,11 @@
       // canvas-unsupported code here
       canvas.classList.add("hidden");
     }
+  }
+
+  function regToVote() {
+    id("gameboard").classList.add("hidden");
+    id("computerScreen").classList.remove("hidden");
   }
 
   /**
