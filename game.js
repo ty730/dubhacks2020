@@ -19,11 +19,24 @@
     }
 
     draw() {
+      if (rightPressed) {
+
+      }
+
+
       this.ctx.beginPath();
       this.ctx.arc(this.x, this.y, 10, 0, Math.PI*2);
       this.ctx.fillStyle = "#0095DD";
       this.ctx.fill();
       this.ctx.closePath();
+    }
+
+    move(dir) {
+      if (dir == "Right" || dir == "ArrowRight") {
+        rightPressed = true;
+      } else if (dir == "Left" || dir == "ArrowLeft") {
+        leftPressed = true;
+      }
     }
   }
 
@@ -41,18 +54,15 @@
     if (canvas.getContext) {
       var ctx = canvas.getContext('2d');
       // drawing code here
+      const player = new Player(50, 50, ctx);
+      setInterval(() => {player.draw();}, 10);
+      document.addEventListener("keyup", (e) => {
+        player.move(e.code);
+      });
     } else {
       // canvas-unsupported code here
       canvas.classList.add("hidden");
     }
-
-    id("").addEventListener()
-  }
-
-  function setupCanvas(ctx) {
-    const player = new Player(50, 50, ctx);
-    setInterval(() => {player.draw();}, 10);
-  }
 
   /**
    * This function requests
