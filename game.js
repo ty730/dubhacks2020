@@ -16,14 +16,23 @@
       this.x = x;
       this.y = y;
       this.ctx = ctx;
+
+      this.rightPressed = false;
+      this.leftPressed = false;
+      this.upPressed = false;
+      this.downPressed = false;
     }
 
     draw() {
-      if (rightPressed) {
-
+      if (this.rightPressed) {
+        this.x += 1;
+      } else if (this.leftPressed) {
+        this.x -= 1;
+      } else if (this.upPressed) {
+        this.y -= 1;
+      } else if (this.downPressed) {
+        this.y += 1;
       }
-
-
       this.ctx.beginPath();
       this.ctx.arc(this.x, this.y, 10, 0, Math.PI*2);
       this.ctx.fillStyle = "#0095DD";
@@ -33,10 +42,21 @@
 
     move(dir) {
       if (dir == "Right" || dir == "ArrowRight") {
-        rightPressed = true;
+        this.rightPressed = true;
       } else if (dir == "Left" || dir == "ArrowLeft") {
-        leftPressed = true;
+        this.leftPressed = true;
+      } else if (dir == "Up" || dir == "ArrowUp") {
+        this.upPressed = true;
+      } else if (dir == "Down" || dir == "ArrowDown") {
+        this.downPressed = true;
       }
+    }
+
+    stop() {
+      this.leftPressed = false;
+      this.rightPressed = false;
+      this.upPressed = false;
+      this.downPressed = false;
     }
   }
 
@@ -55,14 +75,21 @@
       var ctx = canvas.getContext('2d');
       // drawing code here
       const player = new Player(50, 50, ctx);
-      setInterval(() => {player.draw();}, 10);
-      document.addEventListener("keyup", (e) => {
+      setInterval(() => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        player.draw();
+      }, 10);
+      document.addEventListener("keydown", (e) => {
         player.move(e.code);
+      });
+      document.addEventListener("keyup", (e) => {
+        player.stop();
       });
     } else {
       // canvas-unsupported code here
       canvas.classList.add("hidden");
     }
+  }
 
   /**
    * This function requests
