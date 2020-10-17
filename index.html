@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="index.js"></script>
+    <title>Dubhacks 2020</title>
+  </head>
+  <body>
+    <header>
+    </header>
+    <main>
+      <h1>Voting game</h1>
+      <section id="login">
+        <form id="login-form">
+          <div class="input">
+            <label for="login">Username:</label>
+            <input id="user-login" name="username" type="text" pattern="[a-zA-Z0-9]+" required>
+          </div>
+          <div class="input">
+            <label for="password">Password:</label>
+            <input id="user-password" name="password" type="password" pattern="[a-zA-Z0-9]+" required>
+          </div>
+          <button id="submit-btn" form="login-form">Login</button>
+        </form>
+      </section>
+      <section id="game" class="hidden">
+
+      </section>
+    </main>
+    <footer>
+
+    </footer>
+  </body>
+</html>
