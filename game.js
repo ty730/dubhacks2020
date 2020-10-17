@@ -2,10 +2,30 @@
 */
 "use strict";
 
+
 /**
  * This is the self calling anonymous function that holds everything else.
  */
 (function() {
+
+  const WIDTH = 720;
+  const HEIGHT = 480;
+
+  class Player {
+    constructor(x, y, ctx) {
+      this.x = x;
+      this.y = y;
+      this.ctx = ctx;
+    }
+
+    draw() {
+      this.ctx.beginPath();
+      this.ctx.arc(this.x, this.y, 10, 0, Math.PI*2);
+      this.ctx.fillStyle = "#0095DD";
+      this.ctx.fill();
+      this.ctx.closePath();
+    }
+  }
 
   window.addEventListener("load", init);
 
@@ -15,9 +35,16 @@
    */
   function init() {
     let canvas = id('gameboard');
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
 
     if (canvas.getContext) {
       var ctx = canvas.getContext('2d');
+      const player = new Player(50, 50, ctx);
+      function draw() {
+        player.draw();
+      }
+      setInterval(draw(), 10);
       // drawing code here
     } else {
       // canvas-unsupported code here
