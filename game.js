@@ -27,6 +27,8 @@
     }
   }
 
+  const player = new Player(50, 50, ctx);
+
   window.addEventListener("load", init);
 
   /**
@@ -40,16 +42,19 @@
 
     if (canvas.getContext) {
       var ctx = canvas.getContext('2d');
-      const player = new Player(50, 50, ctx);
-      function draw() {
-        player.draw();
-      }
-      setInterval(draw(), 10);
+
+      setInterval(draw, 10);
       // drawing code here
     } else {
       // canvas-unsupported code here
       canvas.classList.add("hidden");
     }
+
+    id("").addEventListener()
+  }
+
+  function draw() {
+    player.draw();
   }
 
   /**
