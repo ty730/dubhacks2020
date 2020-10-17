@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <script src="index.js"></script>
+    <title>Dubhacks 2020</title>
+  </head>
+  <body>
+    <header>
+    </header>
+    <main>
+      <h1>VOTING GAME</h1>
+
+      <section id="start">
+        <a href="game.html">
+          <button>Start</button>
+        </a>
+        <a href="info.html">
+          <button>Info</button>
+        </a>
+      </section>
+
+      <section id="login" class="hidden">
+        <form id="login-form">
+          <div class="input">
+            <label for="login">Username:</label>
+            <input id="user-login" name="username" type="text" pattern="[a-zA-Z0-9]+" required>
+          </div>
+          <button id="submit-btn" form="login-form">Login</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+
+    </footer>
+  </body>
+</html>
