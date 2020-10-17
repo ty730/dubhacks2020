@@ -75,6 +75,31 @@
       this.ctx.closePath();
     }
   }
+  
+  class Countdown {
+    constructor(time, ctx) {
+      this.time = time;
+      this.ctx = ctx;
+
+      setInterval(() => {
+        this.time -= 1;
+      }, 1000);
+    }
+
+    draw() {
+      this.ctx.font = "15px Arial";
+      let minutes = Math.floor(this.time / 60);
+      let seconds = this.time % 60;
+      let message = "Time Left: ";
+      this.ctx.fillStyle = "black";
+      this.ctx.textAlign = "left";
+      if (seconds < 10) {
+        this.ctx.fillText(message + minutes + ":0" + seconds, 5, 20);
+      } else {
+        this.ctx.fillText(message + minutes + ":" + seconds, 5, 20);
+      }
+    }
+  }
 
   window.addEventListener("load", init);
 
@@ -89,16 +114,22 @@
 
     if (canvas.getContext) {
       var ctx = canvas.getContext('2d');
+      let isPaused = false;
       // drawing code here
       const player = new Player(50, 50, ctx);
       const computer = new Place(100, 100, ctx);
+      const countdown = new Countdown(190, ctx);
       setInterval(() => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (Math.abs(player.x - computer.x) < 10 && Math.abs(player.y - computer.y) < 10) {
-          regToVote();
+        if (!isPaused) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          if (Math.abs(player.x - computer.x) < 10 && Math.abs(player.y - computer.y) < 10) {
+            isPaused = true;
+            regToVote();
+          }
+          player.draw();
+          countdown.draw();
+          computer.draw();
         }
-        player.draw();
-        computer.draw();
       }, 10);
       document.addEventListener("keydown", (e) => {
         player.move(e.code);
@@ -114,7 +145,7 @@
 
   function regToVote() {
     id("gameboard").classList.add("hidden");
-    id("computerScreen").classList.remove("hidden");
+    //id("computerScreen").classList.remove("hidden");
   }
 
   /**
