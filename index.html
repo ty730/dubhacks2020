@@ -10,15 +10,11 @@
     </header>
     <main>
       <h1>Voting game</h1>
-      <section id="login">
+      <section id="login" class="hidden">
         <form id="login-form">
           <div class="input">
             <label for="login">Username:</label>
             <input id="user-login" name="username" type="text" pattern="[a-zA-Z0-9]+" required>
-          </div>
-          <div class="input">
-            <label for="password">Password:</label>
-            <input id="user-password" name="password" type="password" pattern="[a-zA-Z0-9]+" required>
           </div>
           <button id="submit-btn" form="login-form">Login</button>
         </form>
