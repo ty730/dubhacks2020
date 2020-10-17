@@ -58,13 +58,22 @@
       this.upPressed = false;
       this.downPressed = false;
     }
+
+    closeToPlace(place) {
+      return (Math.abs(this.x - place.x) < 10 && Math.abs(this.y - place.y) < 10);
+    }
   }
 
   class Place {
-    constructor(x, y, ctx) {
+    constructor(x, y, id, ctx) {
       this.x = x;
       this.y = y;
+      this.id = id;
       this.ctx = ctx;
+
+      this.width = 20;
+      this.height = 20;
+      this.hightlight = false;
     }
 
     draw() {
@@ -72,7 +81,41 @@
       this.ctx.arc(this.x, this.y, 10, 0, Math.PI*2);
       this.ctx.fillStyle = "#DD00DD";
       this.ctx.fill();
+      if (this.highlight === true) {
+        this.ctx.arc(this.x, this.y, 12, 0, Math.PI*2);
+        this.ctx.strokeStyle = "#DD00DD";
+        this.ctx.stroke();
+      }
       this.ctx.closePath();
+    }
+
+    cursorWithin(cursorPos) {
+      return (cursorPos.x - this.x <= this.width || cursorPos.y - this.y <= this.height);
+    }
+  }
+  
+  class Countdown {
+    constructor(time, ctx) {
+      this.time = time;
+      this.ctx = ctx;
+
+      setInterval(() => {
+        this.time -= 1;
+      }, 1000);
+    }
+
+    draw() {
+      this.ctx.font = "15px Arial";
+      let minutes = Math.floor(this.time / 60);
+      let seconds = this.time % 60;
+      let message = "Time Left: ";
+      this.ctx.fillStyle = "black";
+      this.ctx.textAlign = "left";
+      if (seconds < 10) {
+        this.ctx.fillText(message + minutes + ":0" + seconds, 5, 20);
+      } else {
+        this.ctx.fillText(message + minutes + ":" + seconds, 5, 20);
+      }
     }
   }
 
@@ -89,16 +132,26 @@
 
     if (canvas.getContext) {
       var ctx = canvas.getContext('2d');
+      let isPaused = false;
       // drawing code here
       const player = new Player(50, 50, ctx);
-      const computer = new Place(100, 100, ctx);
+      const computer = new Place(100, 100, "computerScreen", ctx);
+      const countdown = new Countdown(190, ctx);
+      const places = [computer];
       setInterval(() => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (Math.abs(player.x - computer.x) < 10 && Math.abs(player.y - computer.y) < 10) {
-          regToVote();
+        if (!isPaused) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          places.forEach((place) => {
+            if (player.closeToPlace(place)) {
+              place.highlight = true;
+            } else {
+              place.highlight = false;
+            }
+          })
+          player.draw();
+          computer.draw();
         }
-        player.draw();
-        computer.draw();
+        countdown.draw();
       }, 10);
       document.addEventListener("keydown", (e) => {
         player.move(e.code);
@@ -106,15 +159,29 @@
       document.addEventListener("keyup", (e) => {
         player.stop();
       });
+      document.addEventListener("click", (e) => {
+        let cursorPos = getCursorPosition(canvas, e);
+        places.forEach((place) => {
+          if (player.closeToPlace(place)) {
+            if (place.cursorWithin(cursorPos)) {
+              id("gameboard").classList.add("hidden");
+              id(place.id).classList.remove("hidden");
+              isPaused = true;
+            }
+          }
+        })
+      });
     } else {
       // canvas-unsupported code here
       canvas.classList.add("hidden");
     }
   }
 
-  function regToVote() {
-    id("gameboard").classList.add("hidden");
-    id("computerScreen").classList.remove("hidden");
+  function getCursorPosition(canvas, event) {
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    return {x: x, y: y};
   }
 
   /**
