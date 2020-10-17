@@ -14,7 +14,8 @@
    * clicked or submitted.
    */
   function init() {
-    id("login-form").addEventListener("submit", playGame);
+    let canvas = id('gameboard');
+    let ctx = canvas.getContext('2d');
   }
 
   /**
@@ -22,8 +23,8 @@
    * @param {event} evnt - event of submitting the submit button
    */
   function playGame(evnt) {
-    id("login").classList.add("hidden");
-    id("game").classList.remove("hidden");
+    //id("login").classList.add("hidden");
+    //id("game").classList.remove("hidden");
 
   }
 
