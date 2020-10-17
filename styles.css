@@ -3,5 +3,17 @@
 }
 
 h1 {
-  font-family: 'Roboto', sans-serif;
+  font-variant: small-caps;
+  font-family: 'Krona One', sans-serif;
+  text-align: center;
+  padding-top: 20px;
+}
+section {
+  display: flex;
+  justify-content: center;
+}
+button {
+  padding: 0 20px;
+  font-size: 1rem;
+  margin: 0 20px;
 }
