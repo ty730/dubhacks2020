@@ -14,7 +14,6 @@
    * clicked or submitted.
    */
   function init() {
-    id("login-form").addEventListener("submit", playGame);
   }
 
   /**
