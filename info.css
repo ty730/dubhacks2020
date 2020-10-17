@@ -1,0 +1,40 @@
+html{  
+    display:flex;
+}
+
+body {
+    display:flex;
+    font-size: 16pt;
+}
+
+
+#main {
+    border: solid black;
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    display:flex;
+}
+
+#labels {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 4px;
+    
+}
+
+#input {
+    display: flex;
+}
+
+#submit {
+    display:flex;
+    width: fit-content;
+    height: fit-content;
+    justify-content: center;
+}
+
+.hidden{
+    display: none;
+}
