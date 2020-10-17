@@ -15,11 +15,12 @@
    * clicked or submitted.
    */
   function init() {
+    id("vote-form").addEventListener("submit", vote);
   }
 
-  function regToVote() {
-    id("gameboard").classList.add("hidden");
-    id("computerScreen").classList.remove("hidden");
+  function vote() {
+    id("choose-candidate").classList.add("hidden");
+    id("drag-and-drop").classList.remove("hidden");
   }
 
   /**

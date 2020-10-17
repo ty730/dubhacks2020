@@ -11,24 +11,19 @@
     </header>
     <main>
       <h1>VOTING GAME</h1>
-
-      <section id="start">
-        <a href="game.html">
-          <button>Start</button>
-        </a>
-        <a href="info.html">
-          <button>Info</button>
-        </a>
-      </section>
-
-      <section id="login" class="hidden">
-        <form id="login-form">
+      <section id="choose-candidate">
+        <form id="vote-form">
           <div class="input">
-            <label for="login">Username:</label>
-            <input id="user-login" name="username" type="text" pattern="[a-zA-Z0-9]+" required>
+            <input id="c1" name="vote-option" type="radio" value="1" required>
+            <label for="login">Candidate 1</label>
+            <input id="c2" name="vote-option" type="radio" value="2" required>
+            <label for="login">Candidate 2</label>
           </div>
-          <button id="submit-btn" form="login-form">Login</button>
+          <button id="btn" form="vote-form">Vote</button>
         </form>
+      </section>
+      <section id="drag-and-drop">
+        <img>
       </section>
     </main>
     <footer>
