@@ -209,7 +209,7 @@
         })
       });
       places.forEach((place) => {
-        let button = id(place.id).getElementsByTagName("button")[0];
+        let button = id("resume-" + place.id);
         button.addEventListener("click", () => {
           place.done = true;
           id("gameboard").classList.remove("hidden");

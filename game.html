@@ -3,6 +3,9 @@
   <head>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="game.css" />
+    <link rel="stylesheet" href="vote.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <script src="vote.js"></script>
     <script src="game.js"></script>
     <title>Dubhacks 2020</title>
   </head>
@@ -22,15 +25,39 @@
       </div>
       <section id="computerScreen" class="hidden">
         <h1>Computer Screen!</h1>
-        <button>Resume</button>
+        <button id="resume-computerScreen">Back</button>
       </section>
       <section id="ballotBox" class="hidden">
-        <h1>Ballot Box</h1>
-        <button>Resume</button>
+        <h1>VOTING GAME</h1>
+        <section id="choose-candidate">
+          <form id="vote-form">
+            <div class="input">
+              <div>
+                <input id="c1" name="vote-option" type="radio" value="1" required>
+                <label for="login">Candidate 1</label>
+              </div>
+              <div>
+                <input id="c2" name="vote-option" type="radio" value="2" required>
+              <label for="login">Candidate 2</label>
+              </div>
+            </div>
+            <button id="btn" form="vote-form">Vote</button>
+          </form>
+        </section>
+        <section id="ballot" class="hidden">
+          <h2>Drag the ballot to the ballot box</h2>
+          <div id="drag-and-drop" class="hidden">
+            <div id="contain-envelope">
+              <img draggable="true" id="envelope" src="images/envelope.png" alt="Envelope">
+            </div>
+            <img id="mail-box" src="images/mail_box.png" alt="Mail Box">
+          </div>
+        </section>
+        <button id="resume-ballotBox">Resume</button>
       </section>
       <section id="researchTask" class="hidden">
         <h1>Read some books you illiterate fuck!</h1>
-        <button>Resume</button>
+        <button id="resume-researchTask">Resume</button>
       </section>
     </main>
     <footer>
