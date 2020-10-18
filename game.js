@@ -164,15 +164,7 @@
       let draw = setInterval(() => {
         if (!isPaused) {
           if (countdown.time == 0) {
-            ctx.globalAlpha = 0.2;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.globalAlpha = 1;
-            ctx.font = "30px Georgia";
-            ctx.fillStyle = "black";
-            ctx.textAlign = "left";
-            ctx.fillText("GAME OVER", 360, 240);
-            clearInterval(countdown.timer);
-            clearInterval(draw);
+            window.location.href = "./game_over.html";
             // game over
           } else {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
