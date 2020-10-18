@@ -1,53 +1,94 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="info.css" />
     <script src="info.js"></script>
     <title>Dubhacks 2020</title>
   </head>
   <body>
+    
     <header>
     </header>
     <main>
-      <h1 id = 'pagetitle'>Voting game</h1>
+      <img src="./images/info.png" width = 100%/ >
       <form id = 'form'>
-          <label for = 'name'>Name:</label>
-          <input id = 'name' name = 'name' type = 'text' required><br>
-          <label for = "Date of Birth">Date of Birth:</label>
-          <input list = "months" placeholder = "Month" required>
-          <datalist id = "months">
-            <option value = "January">
-            <option value = "February">
-            <option value = "March">
-            <option value = "April">
-            <option value = "May">
-            <option value = "June">
-            <option value = "July">
-            <option value = "August">
-            <option value = "September">
-            <option value = "October">
-            <option value = "November">
-            <option value = "December">
-          </datalist><br>
-          <label for = 'location'>Location:</label>
-          <input list = 'location' list = 'location' placeholder = "State" required>
-          <datalist id = 'location'>
-            <option value = "HUB">
-            <option value = "ODE">
-            <option value = "SUZ">
-            <option value = "MGH">
-          </datalist> <br>
-          <label for = "purple"> Party Affiliation:</label>   
-          <input type = "radio" id = "purple" name = "browser" value = 'Purple'>Purple
+        <h1 id = 'pagetitle'>Register to vote!</h1>
+        <div id = "main">
+
+        
+          <div id = "labels">
+              <label for = 'name'>Name:</label>
+              <label for = "months">Date of Birth:</label>
           
-          <input type = "radio" id = "gold" name = 'browser' value = 'Gold'> Gold
-          <button id = 'input' for = 'form'>SEARCH</button>
+              <label for = 'location'>Location:</label>
+              <label for = "purple"> Party Affiliation:</label> 
+            </div>
+            <div id = "inputs">
+              <input id = 'name' name = 'name' type = 'text' required><br>
+            
+            
+            <select id = "months" required>
+              <option value = "January">January</option>
+              <option value = "February">February</option>
+              <option value = "March">March</option>/
+              <option value = "April">April</option>
+              <option value = "May">May</option>
+              <option value = "June">June</option>
+              <option value = "July">July</option>
+              <option value = "August">August</option>
+              <option value = "September">September</option>
+              <option value = "October">October</option>
+              <option value = "November">November</option>
+              <option value = "December">December</option>
+              </select>
+              <input id = 'year' year = 'year' placeholder = "Year" type = 'text' required><br>
+            
+           
+            <select id = 'location' placeholder = "State:" required>
+              <option value = "HUB">HUB</option>
+              <option value = "ODE">ODE</option>
+              <option value = "SUZ">SUZ</option>
+              <option value = "MGH">MGH</option>
+            
+
+              </select> <br>
+            <input type = "radio" id = "purple" name = "browser" for="form" value = 'Purple' required>Purple
+            <input type = "radio" id = "gold" name = 'browser' value = 'Gold' required> Gold<br>
+          </div>
+          
+          
+        </div> 
+        <div id = "submit">
+          <button id = 'input' for = 'form'>SUBMIT</button>
+        </div>
+          
+          
           
       </form>
-      <section id="info">
-        <!--Input info here. Make divs to seperate parts, and <p> for paragraphs-->
+      <form>
+        <section id="info" class = "hidden">
+          <div id = "heading1">
+            <h1 id= "heading">Hi, <span id = "names"></span>! </h1>
+            <img src="./images/player.png" width = 2.5% height = 2.5% >
+            <h2>You are registered to vote!</h2>
+          </div>
+          
+          <p id = "maintext">
+            
+            For more information on registering to vote, visit <a href= "https://www.usa.gov/how-to-vote">
+              www.usa.gov/how-to-vote</a>.<br>
 
-      </section>
+            Based on your information, being <span id="age"></span> years old,
+
+            you can vote in the election on November 3rd.<br>
+
+            Registering is just the first step.
+            
+          </p>
+          <button id = 'backtoGame' for = 'form'>Time to research candidates!</button>
+        </section>
+      </form>
+      
     </main>
     <footer>
 
