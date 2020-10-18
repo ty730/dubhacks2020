@@ -108,7 +108,7 @@
       return (cursorPos.x - this.x <= this.width || cursorPos.y - this.y <= this.height);
     }
   }
-  
+
   class Countdown {
     constructor(time, ctx) {
       this.time = time;
@@ -152,14 +152,14 @@
     if (canvas.getContext) {
       canvas.getContext('2d').scale(2,2);
       var ctx = canvas.getContext('2d');
-      
+
       let isPaused = false;
       // drawing code here
       const player = new Player(50, 50, 'images/player.png', ctx);
       const computer = new Place(80, 275, 75, 50, "computerScreen", 'images/computer.png', ctx);
       const ballot = new Place(640, 230, 80, 120, "ballotBox", 'images/ballot_box.png', ctx);
       const research = new Place(250, 0, 75, 128, "researchTask", 'images/books.png', ctx);
-      const countdown = new Countdown(60, ctx);
+      const countdown = new Countdown(180, ctx);
       places = [computer, ballot, research];
       let draw = setInterval(() => {
         if (!isPaused) {

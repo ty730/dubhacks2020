@@ -12,6 +12,12 @@ h2 {
   font-style: italic;
   text-align: center;
 }
+h3 {
+  font-family: 'Lucida Sans', sans-serif;
+  font-size: 40px;
+  font-style: italic;
+  text-align: center;
+}
 p {
   font-family: 'Lucida Sans', sans-serif;
   font-size: 18px;
