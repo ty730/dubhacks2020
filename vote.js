@@ -45,6 +45,7 @@
     console.log(evnt.target);
     evnt.target.src = "images/ballot_in_box.png";
     id("contain-envelope").innerHTML = "";
+    id("finish-btn").classList.remove("hidden");
   }
 
   /**
