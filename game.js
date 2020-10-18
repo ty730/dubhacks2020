@@ -211,14 +211,25 @@
       });
       places.forEach((place) => {
         let button = id("resume-" + place.id);
-        button.addEventListener("click", () => {
-          if (place.id !== "ballotBox") {
-            place.done = true;
-            id("gameboard").classList.remove("hidden");
-            id(place.id).classList.add("hidden");
-            isPaused = false;
-          }
-        });
+        if (place.id != "researchTask") {
+          button.addEventListener("click", () => {
+            if (place.id !== "ballotBox") {
+              place.done = true;
+              id("gameboard").classList.remove("hidden");
+              id(place.id).classList.add("hidden");
+              isPaused = false;
+            }
+          });
+        } else {
+          button.addEventListener("submit", () => {
+            if (place.id !== "ballotBox") {
+              place.done = true;
+              id("gameboard").classList.remove("hidden");
+              id(place.id).classList.add("hidden");
+              isPaused = false;
+            }
+          });
+        }
       })
     } else {
       // canvas-unsupported code here
