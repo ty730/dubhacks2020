@@ -1,0 +1,47 @@
+.hidden {
+    display: none;
+  }
+  h1 {
+    font-family: 'Krona One', sans-serif;
+    text-align: center;
+    font-size: 60px;
+  }
+  h2 {
+    font-family: 'Lucida Sans', sans-serif;
+    font-size: 24px;
+    font-style: italic;
+    text-align: center;
+  }
+  p {
+    font-family: 'Lucida Sans', sans-serif;
+    font-size: 18px;
+    text-align: center;
+  }
+  #end{
+    font-family: 'Lucida Sans', sans-serif;
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin: 10px;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  button:hover {
+    background-color: white;
+  }
+  #start {
+    text-align: center;
+  }
+  body {
+    background-color: #a7c6d9;
+  }
+  img {
+    width: 15%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  
