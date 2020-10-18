@@ -1,6 +1,6 @@
-#researchTask {
+#rsrchpg {
   display: flex;
-  flex-direction: row;
+  flex-wrap: nowrap;
   font-size: 20pt;
   line-height: 35px;
 }
@@ -23,7 +23,7 @@
 }
 
 #gold {
-  color: goldenrod;
+  color: rgb(165, 118, 0);
 }
 
 #purple {
