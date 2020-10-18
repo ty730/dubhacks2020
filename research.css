@@ -21,6 +21,14 @@ main {
   margin-bottom: 20px;
 }
 
+#gold {
+  color: gold;
+}
+
+#purple {
+  color: purple;
+}
+
 .title {
   font-size: 30px;
 }
