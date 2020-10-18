@@ -10,7 +10,7 @@
 
   const WIDTH = 720;
   const HEIGHT = 480;
-  const SPEED = 5;
+  const SPEED = 2;
 
   class Player {
     constructor(x, y, image, ctx) {
