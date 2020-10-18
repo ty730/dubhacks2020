@@ -19,6 +19,7 @@
     id("envelope").addEventListener("dragstart", dragEnvelope);
     id("envelope").addEventListener("dragend", dragEnd);
     id("mail-box").addEventListener("dragover", dragOver);
+    id("mail-box").addEventListener("drop", drop);
   }
 
   function vote(evnt) {
@@ -37,7 +38,14 @@
   }
 
   function dragOver(evnt) {
-    evnt.target.classList.remove("drag");
+    evnt.preventDefault();
+    //console.log(evnt.target);
+    //evnt.target.classList.add("drag");
+  }
+
+  function drop(evnt) {
+    console.log(evnt.target);
+    evnt.target.src = "images/ballot_in_box.png";
   }
 
   /**
