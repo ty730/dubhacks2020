@@ -10,6 +10,7 @@
 
   const WIDTH = 720;
   const HEIGHT = 480;
+  const SPEED = 5;
 
   class Player {
     constructor(x, y, image, ctx) {
@@ -31,13 +32,13 @@
 
     draw() {
       if (this.rightPressed) {
-        this.x += 1;
+        this.x += SPEED;
       } else if (this.leftPressed) {
-        this.x -= 1;
+        this.x -= SPEED;
       } else if (this.upPressed) {
-        this.y -= 1;
+        this.y -= SPEED;
       } else if (this.downPressed) {
-        this.y += 1;
+        this.y += SPEED;
       }
 
       this.ctx.drawImage(this.image,this.x,this.y,this.width,this.height);
@@ -211,10 +212,12 @@
       places.forEach((place) => {
         let button = id("resume-" + place.id);
         button.addEventListener("click", () => {
-          place.done = true;
-          id("gameboard").classList.remove("hidden");
-          id(place.id).classList.add("hidden");
-          isPaused = false;
+          if (place.id !== "ballotBox") {
+            place.done = true;
+            id("gameboard").classList.remove("hidden");
+            id(place.id).classList.add("hidden");
+            isPaused = false;
+          }
         });
       })
     } else {
