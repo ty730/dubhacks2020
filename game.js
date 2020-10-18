@@ -77,6 +77,7 @@
       this.width = 20;
       this.height = 20;
       this.hightlight = false;
+      this.done = false;
     }
 
     draw() {
@@ -124,6 +125,8 @@
 
   window.addEventListener("load", init);
 
+  let places = [];
+
   /**
    * This function initialized the functions for making requests when buttons are
    * clicked or submitted.
@@ -138,9 +141,9 @@
       let isPaused = false;
       // drawing code here
       const player = new Player(50, 50, ctx);
-      const computer = new Place(100, 100, "computerScreen", ctx);
+      const computer = new Place(500, 100, "computerScreen", ctx);
       const countdown = new Countdown(190, ctx);
-      const places = [computer];
+      places[0] = computer;
       setInterval(() => {
         if (!isPaused) {
           if (countdown.time == 0) {
@@ -148,7 +151,7 @@
           } else {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             places.forEach((place) => {
-              if (player.closeToPlace(place)) {
+              if (player.closeToPlace(place) && !place.done) {
                 place.highlight = true;
               } else {
                 place.highlight = false;
@@ -166,10 +169,10 @@
       document.addEventListener("keyup", (e) => {
         player.stop();
       });
-      document.addEventListener("click", (e) => {
+      canvas.addEventListener("click", (e) => {
         let cursorPos = getCursorPosition(canvas, e);
         places.forEach((place) => {
-          if (player.closeToPlace(place)) {
+          if (player.closeToPlace(place) && !place.done) {
             if (place.cursorWithin(cursorPos)) {
               id("gameboard").classList.add("hidden");
               id(place.id).classList.remove("hidden");
@@ -178,6 +181,15 @@
           }
         })
       });
+      places.forEach((place) => {
+        let button = id(place.id).getElementsByTagName("button")[0];
+        button.addEventListener("click", () => {
+          place.done = true;
+          id("gameboard").classList.remove("hidden");
+          id(place.id).classList.add("hidden");
+          isPaused = false;
+        });
+      })
     } else {
       // canvas-unsupported code here
       canvas.classList.add("hidden");
