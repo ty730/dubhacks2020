@@ -195,6 +195,7 @@
           if (player.closeToPlace(place) && !place.done) {
             if (place.cursorWithin(cursorPos)) {
               id("gameboard").classList.add("hidden");
+              id("instructions").classList.add("hidden");
               id(place.id).classList.remove("hidden");
               isPaused = true;
             }
@@ -209,6 +210,7 @@
               place.done = true;
               id("gameboard").classList.remove("hidden");
               id(place.id).classList.add("hidden");
+              id("instructions").classList.remove("hidden");
               if (place.id == "researchTask") {
                 id("instructions").textContent = "Step 3: send in your ballot!";
               }
