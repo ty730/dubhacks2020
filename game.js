@@ -17,6 +17,9 @@
       this.y = y;
       this.ctx = ctx;
 
+      this.width = 20;
+      this.height = 20;
+
       this.rightPressed = false;
       this.leftPressed = false;
       this.upPressed = false;
@@ -60,7 +63,7 @@
     }
 
     closeToPlace(place) {
-      return (Math.abs(this.x - place.x) < 10 && Math.abs(this.y - place.y) < 10);
+      return (Math.abs(this.x - place.x) < place.width + 5 && Math.abs(this.y - place.y) < place.width + 5);
     }
   }
 
@@ -140,16 +143,20 @@
       const places = [computer];
       setInterval(() => {
         if (!isPaused) {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          places.forEach((place) => {
-            if (player.closeToPlace(place)) {
-              place.highlight = true;
-            } else {
-              place.highlight = false;
-            }
-          })
-          player.draw();
-          computer.draw();
+          if (countdown.time == 0) {
+            // game over
+          } else {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            places.forEach((place) => {
+              if (player.closeToPlace(place)) {
+                place.highlight = true;
+              } else {
+                place.highlight = false;
+              }
+            })
+            player.draw();
+            computer.draw();
+          }
         }
         countdown.draw();
       }, 10);
