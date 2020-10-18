@@ -211,25 +211,18 @@
       });
       places.forEach((place) => {
         let button = id("resume-" + place.id);
-        if (place.id != "researchTask") {
           button.addEventListener("click", () => {
+            console.log("no submit");
             if (place.id !== "ballotBox") {
               place.done = true;
               id("gameboard").classList.remove("hidden");
               id(place.id).classList.add("hidden");
+              if (place.id == "researchTask") {
+                id("instructions").textContent = "Step 3: send in your ballot!";
+              }
               isPaused = false;
             }
           });
-        } else {
-          button.addEventListener("submit", () => {
-            if (place.id !== "ballotBox") {
-              place.done = true;
-              id("gameboard").classList.remove("hidden");
-              id(place.id).classList.add("hidden");
-              isPaused = false;
-            }
-          });
-        }
       })
     } else {
       // canvas-unsupported code here

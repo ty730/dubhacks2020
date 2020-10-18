@@ -17,7 +17,7 @@
         id("form").addEventListener("submit", playGame);
 
         id("info").addEventListener("submit", backToGame);
-        
+
   }
 
   /**
@@ -30,11 +30,11 @@
     evnt.preventDefault();
     let data = new FormData(evnt.target);
     let name = data.get("name");
-    let selectElement1 =  document.querySelector('#months');           
-    let month = selectElement1.value; 
+    let selectElement1 =  document.querySelector('#months');
+    let month = selectElement1.value;
     let year = data.get("year");
     let age = 2020 - id('year').value;
-    
+
     console.log(month);
     console.log(id('year').value)
     let selectElement2 =  document.querySelector('#location');
@@ -49,14 +49,15 @@
 
     id("names").textContent = name;
     id('resume-computerScreen').classList.remove("hidden");
+    id("instructions").textContent = "Second: Time to hit the books. Be an informed voter, research the candidates!";
   }
 
 
   function displayRadioValue() {
-    var ele = document.getElementsByName('browser');     
-            for(let i = 0; i < ele.length; i++) { 
-                if(ele[i].checked) 
-                return ele[i].value; 
+    var ele = document.getElementsByName('browser');
+            for(let i = 0; i < ele.length; i++) {
+                if(ele[i].checked)
+                return ele[i].value;
             }
    }
 
