@@ -12,18 +12,21 @@
   const HEIGHT = 480;
 
   class Player {
-    constructor(x, y, ctx) {
+    constructor(x, y, image, ctx) {
       this.x = x;
       this.y = y;
       this.ctx = ctx;
 
-      this.width = 20;
-      this.height = 20;
+      this.width = 30;
+      this.height = 60;
 
       this.rightPressed = false;
       this.leftPressed = false;
       this.upPressed = false;
       this.downPressed = false;
+
+      this.image = new Image();
+      this.image.src = image;
     }
 
     draw() {
@@ -36,11 +39,8 @@
       } else if (this.downPressed) {
         this.y += 1;
       }
-      this.ctx.beginPath();
-      this.ctx.arc(this.x, this.y, 10, 0, Math.PI*2);
-      this.ctx.fillStyle = "#0095DD";
-      this.ctx.fill();
-      this.ctx.closePath();
+
+      this.ctx.drawImage(this.image,this.x,this.y,this.width,this.height);
     }
 
     move(dir) {
@@ -63,33 +63,42 @@
     }
 
     closeToPlace(place) {
-      return (Math.abs(this.x - place.x) < place.width + 5 && Math.abs(this.y - place.y) < place.width + 5);
+      let l1 = {x: this.x, y: this.y};
+      let r1 = {x: this.x + this.width, y: this.y + this.height};
+      let l2 = {x: place.x - 5, y: place.y - 5};
+      let r2 = {x: place.x + place.width + 5, y: place.y + place.height + 5};
+      if (l1.x >= r2.x || l2.x >= r1.x) {
+        return false;
+      }
+      if (l1.y >= r2.y || l2.y >= r1.y) {
+        return false;
+      }
+      return true;
     }
   }
 
   class Place {
-    constructor(x, y, id, ctx) {
+    constructor(x, y, width, height, id, image, ctx) {
       this.x = x;
       this.y = y;
       this.id = id;
       this.ctx = ctx;
 
-      this.width = 20;
-      this.height = 20;
+      this.width = width;
+      this.height = height;
       this.hightlight = false;
+      this.done = false;
+
+      this.image = new Image();
+      this.image.src = image;
     }
 
     draw() {
-      this.ctx.beginPath();
-      this.ctx.arc(this.x, this.y, 10, 0, Math.PI*2);
-      this.ctx.fillStyle = "#DD00DD";
-      this.ctx.fill();
+      this.ctx.drawImage(this.image,this.x,this.y,this.width,this.height);
       if (this.highlight === true) {
-        this.ctx.arc(this.x, this.y, 12, 0, Math.PI*2);
         this.ctx.strokeStyle = "#DD00DD";
-        this.ctx.stroke();
+        this.ctx.strokeRect(this.x - 2, this.y - 2, this.width + 4, this.height + 4);
       }
-      this.ctx.closePath();
     }
 
     cursorWithin(cursorPos) {
@@ -108,7 +117,7 @@
     }
 
     draw() {
-      this.ctx.font = "15px Arial";
+      this.ctx.font = "15px Courier New";
       let minutes = Math.floor(this.time / 60);
       let seconds = this.time % 60;
       let message = "Time Left: ";
@@ -124,6 +133,8 @@
 
   window.addEventListener("load", init);
 
+  let places = [];
+
   /**
    * This function initialized the functions for making requests when buttons are
    * clicked or submitted.
@@ -137,10 +148,12 @@
       var ctx = canvas.getContext('2d');
       let isPaused = false;
       // drawing code here
-      const player = new Player(50, 50, ctx);
-      const computer = new Place(100, 100, "computerScreen", ctx);
+      const player = new Player(50, 50, 'images/player.png', ctx);
+      const computer = new Place(100, 100, 75, 50, "computerScreen", 'images/computer.png', ctx);
+      const ballot = new Place(200, 100, 50, 80, "ballotBox", 'images/ballot_box.png', ctx);
+      const research = new Place(300, 100, 50, 80, "researchTask", 'images/books.png', ctx);
       const countdown = new Countdown(190, ctx);
-      const places = [computer];
+      places = [computer, ballot, research];
       setInterval(() => {
         if (!isPaused) {
           if (countdown.time == 0) {
@@ -148,14 +161,16 @@
           } else {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             places.forEach((place) => {
-              if (player.closeToPlace(place)) {
+              if (player.closeToPlace(place) && !place.done) {
                 place.highlight = true;
               } else {
                 place.highlight = false;
               }
-            })
+            });
+            places.forEach((place) => {
+              place.draw();
+            });
             player.draw();
-            computer.draw();
           }
         }
         countdown.draw();
@@ -166,10 +181,10 @@
       document.addEventListener("keyup", (e) => {
         player.stop();
       });
-      document.addEventListener("click", (e) => {
+      canvas.addEventListener("click", (e) => {
         let cursorPos = getCursorPosition(canvas, e);
         places.forEach((place) => {
-          if (player.closeToPlace(place)) {
+          if (player.closeToPlace(place) && !place.done) {
             if (place.cursorWithin(cursorPos)) {
               id("gameboard").classList.add("hidden");
               id(place.id).classList.remove("hidden");
@@ -178,6 +193,15 @@
           }
         })
       });
+      places.forEach((place) => {
+        let button = id(place.id).getElementsByTagName("button")[0];
+        button.addEventListener("click", () => {
+          place.done = true;
+          id("gameboard").classList.remove("hidden");
+          id(place.id).classList.add("hidden");
+          isPaused = false;
+        });
+      })
     } else {
       // canvas-unsupported code here
       canvas.classList.add("hidden");

@@ -16,11 +16,23 @@
    */
   function init() {
     id("vote-form").addEventListener("submit", vote);
+    id("envelope").addEventListener("dragstart", dragEnvelope);
+    id("envelope").addEventListener("dragend", dragEnd);
   }
 
-  function vote() {
+  function vote(evnt) {
+    evnt.preventDefault();
     id("choose-candidate").classList.add("hidden");
     id("drag-and-drop").classList.remove("hidden");
+  }
+
+  function dragEnvelope(evnt) {
+    console.log(evnt);
+    evnt.target.classList.add("drag");
+  }
+
+  function dragEnd(evnt) {
+    evnt.target.classList.remove("drag");
   }
 
   /**
