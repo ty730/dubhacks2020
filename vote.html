@@ -15,17 +15,24 @@
       <section id="choose-candidate">
         <form id="vote-form">
           <div class="input">
-            <input id="c1" name="vote-option" type="radio" value="1" required>
-            <label for="login">Candidate 1</label>
-            <input id="c2" name="vote-option" type="radio" value="2" required>
+            <div>
+              <input id="c1" name="vote-option" type="radio" value="1" required>
+              <label for="login">Candidate 1</label>
+            </div>
+            <div>
+              <input id="c2" name="vote-option" type="radio" value="2" required>
             <label for="login">Candidate 2</label>
+            </div>
           </div>
           <button id="btn" form="vote-form">Vote</button>
         </form>
       </section>
       <section id="ballot" class="hidden">
+        <h2>Drag the ballot to the ballot box</h2>
         <div id="drag-and-drop" class="hidden">
-          <img draggable="true" id="envelope" src="images/envelope.png" alt="Envelope">
+          <div id="contain-envelope">
+            <img draggable="true" id="envelope" src="images/envelope.png" alt="Envelope">
+          </div>
           <img id="mail-box" src="images/mail_box.png" alt="Mail Box">
         </div>
       </section>

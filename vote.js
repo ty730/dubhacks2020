@@ -39,25 +39,13 @@
 
   function dragOver(evnt) {
     evnt.preventDefault();
-    //console.log(evnt.target);
-    //evnt.target.classList.add("drag");
   }
 
   function drop(evnt) {
     console.log(evnt.target);
     evnt.target.src = "images/ballot_in_box.png";
+    id("contain-envelope").innerHTML = "";
   }
-
-  /**
-   * This function requests
-   * @param {event} evnt - event of submitting the submit button
-   */
-  function playGame(evnt) {
-    //id("login").classList.add("hidden");
-    //id("game").classList.remove("hidden");
-
-  }
-
 
   /**
    * Returns the element that has the ID attribute with the specified value.
