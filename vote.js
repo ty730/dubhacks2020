@@ -18,7 +18,7 @@
     id("vote-form").addEventListener("submit", vote);
   }
 
-  function vote() {
+  function vote(evnt) {
     id("choose-candidate").classList.add("hidden");
     id("drag-and-drop").classList.remove("hidden");
   }
