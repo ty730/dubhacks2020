@@ -17,7 +17,6 @@
         id("form").addEventListener("submit", playGame);
 
         id("info").addEventListener("submit", backToGame);
-    
         
   }
 
@@ -49,6 +48,7 @@
     console.log("namee" +name);
 
     id("names").textContent = name;
+    id('resume-computerScreen').classList.remove("hidden");
   }
 
 
@@ -61,7 +61,6 @@
    }
 
    function backToGame(){
-
    }
 
   /**
