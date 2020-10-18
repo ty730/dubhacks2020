@@ -1,13 +1,6 @@
-html{  
-    display:flex;
-    
-}
-
-body {
-    display:flex;
+#compscrn {
     font-size: 16pt;
     background-color: #a7c6d9;
-    justify-content: center;
     border: solid black;
     border-radius: 10px;
     width: 100%;
@@ -58,7 +51,7 @@ body {
 }
 
 #maintext{
-    
+
     border: solid white;
     margin-top: 20px;
     border-radius: 20px;
