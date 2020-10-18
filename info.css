@@ -3,8 +3,11 @@
     background-color: #a7c6d9;
     border: solid black;
     border-radius: 10px;
-    width: 720px;
-    height:480px;
+    width: 80%;
+    height: 20%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #form{
