@@ -1,5 +1,7 @@
 main {
   display: flex;
+  font-size: 20pt;
+  line-height: 35px;
 }
 
 #info {
@@ -11,4 +13,22 @@ main {
   flex: 1;
   margin: 40px;
   text-align: center;
+}
+
+#contain {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#gold {
+  color: goldenrod;
+}
+
+#purple {
+  color: purple;
+}
+
+.title {
+  font-size: 30px;
 }

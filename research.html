@@ -13,76 +13,87 @@
       <h1>VOTING GAME</h1>
     <main>
       <section id="info">
-        <p>Enter real info about voting for player to research.</p>
+        <h2 class="title">Candidate Information</h2>
+        <p id="gold">
+          Kim Kimberly (Gold Party)</p>
         <p>
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
-          vote vote vote vote vote vote vote vote vote vote vote vote vote
+          Hello! My name is Kim Kimberly and I am running for President of the United States.
+          I proudly believe that our water fountains within our public parks are lack-luster.
+          One of my key policies is that for every new water fountain built within this great nation
+          we will have at least one lemonade fountain built. I have experience in public service
+          including being the Mayor of Seattle where I helped raise money for schools through
+          a local income tax. Some of my values include: fairness, creativity, happiness, and leadership.
         </p>
+        <p id="purple">Marcus Markstrom (Purple Party)</p>
+        <p>
+          Hey voters, I’m Marcus Markstrom, and I’m running for President as a member of the
+          Purple Party. I’m a big supporter of changing our current week schedules to have
+          a three-day weekend every week; Saturday and Sunday are just simply not enough!
+          My past position as Superintendent of the Seattle School District showed off my
+          leadership skills, where I reformed education to include coding classes at a young age.
+          Some of my values include: justice, peace, respect, and creativity.
+          </p>
       </section>
 
       <section id="test">
+        <h2 class="title">Questionnare</h2>
+        <p>Fill in the blanks:</p>
         <form id="test-form">
           <div class="input">
-            <label for="login">Question 1:</label>
-            <input id="q1" name="question" type="text" pattern="[a-zA-Z0-9]+" required>
-          </div>
-          <div class="input">
-            <label for="login">Question 2:</label>
-            <input id="q2" name="question" type="text" pattern="[a-zA-Z0-9]+" required>
-          </div>
-          <div class="input">
-            <label for="login">Question 3:</label>
-            <input id="q3" name="question" type="text" pattern="[a-zA-Z0-9]+" required>
-          </div>
-          <div class="input">
-            <label for="login">Question 4:</label>
-            <input id="q4" name="question" type="text" pattern="[a-zA-Z0-9]+" required>
-          </div>
-          <div class="input">
-            <label for="login">Question 5:</label>
-            <input id="q5" name="question" type="text" pattern="[a-zA-Z0-9]+" required>
-          </div>
-          <div class="input">
-            <label for="login">Question 6:</label>
-            <input id="q6" name="question" type="text" pattern="[a-zA-Z0-9]+" required>
-          </div>
-          <div class="input">
-            <label for="login">Question 7:</label>
-            <input id="q7" name="question" type="text" pattern="[a-zA-Z0-9]+" required>
-          </div>
-          <div class="input">
-            <p>Question 8</p>
-            <input id="qq2" name="question" type="radio" value="1" required>
-            <label for="login">Choice 1</label>
-            <input id="qq3" name="question" type="radio" value="2" required>
-            <label for="login">Choice 2</label>
-          </div>
-          <div class="input">
-            <p>Question 9</p>
-            <input id="qq4" name="question" type="radio" value="1" required>
-            <label for="login">Choice 1</label>
-            <input id="qq5" name="question" type="radio" value="2" required>
-            <label for="login">Choice 1</label>
+            <p>
+              The gold party's candidates name is
+              <input id="q1" name="question" type="text" pattern="[a-zA-Z0-9]+" required>
+              . One of Kim Kimberly's policies is that a
+              <select>
+                <option value="0" selected="selected" disabled>Select answer:</option>
+                <option value="1">root beer</option>
+                <option value="2">lemonade</option>
+                <option value="3">iced tea</option>
+              </select>
+              fountain is built. Kim has public service experince being the mayor of
+              <input id="q2" name="question" type="text" pattern="[a-zA-Z0-9]+" required>
+            </p>
+            <p>
+              The purple party's candidates name is
+              <select>
+                <option value="0" selected="selected" disabled>Select answer:</option>
+                <option value="1">Sally Sandstorm</option>
+                <option value="2">Randy Bobandy</option>
+                <option value="3">Marcus Markstrom</option>
+              </select>
+              . This candidate supports the policy of changing the weekend to
+              <select>
+                <option value="0" selected="selected" disabled>Select answer:</option>
+                <option value="1">0</option>
+                <option value="2">3</option>
+                <option value="3">7</option>
+              </select>
+              days. Marcus was previously the Superintendent of the
+              <select>
+                <option value="0" selected="selected" disabled>Select answer:</option>
+                <option value="1">Seattle</option>
+                <option value="2">Los Angeles</option>
+                <option value="3">Dubai</option>
+              </select>
+              school district. He reformed schools to include
+              <input id="q4" name="question" type="text" pattern="[a-zA-Z0-9]+" required>
+              classes at young ages. The best project in all of DubHacks 2020 is
+              <select>
+                <option value="0" selected="selected" disabled>Select answer:</option>
+                <option value="1">Voting Quest</option>
+              </select>.
+            </p>
+            <p>Bonus Question: Who would you vote for? (no correct answer)</p>
+            <div id="contain">
+              <div class="option">
+                <input id="qq4" name="question" type="radio" value="1" required>
+                <label for="login">Kim Kimberly</label>
+              </div>
+              <div class="option">
+                <input id="qq5" name="question" type="radio" value="2" required>
+                <label for="login">Marcus Markstrom</label>
+              </div>
+            </div>
           </div>
           <button id="submit-btn" form="test-form">Submit Quiz</button>
         </form>
