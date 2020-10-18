@@ -204,7 +204,8 @@
       });
       places.forEach((place) => {
         let button = id("resume-" + place.id);
-          button.addEventListener("click", () => {
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
             console.log("no submit");
             if (place.id !== "ballotBox") {
               place.done = true;
