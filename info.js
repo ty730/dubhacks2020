@@ -14,7 +14,11 @@
    * clicked or submitted.
    */
   function init() {
-    id("login-form").addEventListener("submit", playGame);
+        id("form").addEventListener("submit", playGame);
+
+        id("info").addEventListener("submit", backToGame);
+    
+        
   }
 
   /**
@@ -22,11 +26,43 @@
    * @param {event} evnt - event of submitting the submit button
    */
   function playGame(evnt) {
-    id("login").classList.add("hidden");
-    id("game").classList.remove("hidden");
+    let step1 = true;
+    console.log(evnt);
+    evnt.preventDefault();
+    let data = new FormData(evnt.target);
+    let name = data.get("name");
+    let selectElement1 =  document.querySelector('#months');           
+    let month = selectElement1.value; 
+    let year = data.get("year");
+    let age = 2020 - id('year').value;
+    
+    console.log(month);
+    console.log(id('year').value)
+    let selectElement2 =  document.querySelector('#location');
+    let location = selectElement2.value;
+    console.log(location);
+    let party = displayRadioValue();
+    console.log(party);
+    id('form').classList.add('hidden');
+    id("info").classList.remove("hidden");
+    id("age").textContent = age;
+    console.log("namee" +name);
 
+    id("names").textContent = name;
   }
 
+
+  function displayRadioValue() {
+    var ele = document.getElementsByName('browser');     
+            for(let i = 0; i < ele.length; i++) { 
+                if(ele[i].checked) 
+                return ele[i].value; 
+            }
+   }
+
+   function backToGame(){
+
+   }
 
   /**
    * Returns the element that has the ID attribute with the specified value.
