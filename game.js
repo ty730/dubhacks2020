@@ -17,7 +17,7 @@
       this.y = y;
       this.ctx = ctx;
 
-      this.width = 30;
+      this.width = 45;
       this.height = 60;
 
       this.rightPressed = false;
@@ -94,11 +94,13 @@
     }
 
     draw() {
-      this.ctx.drawImage(this.image,this.x,this.y,this.width,this.height);
       if (this.highlight === true) {
-        this.ctx.strokeStyle = "#DD00DD";
-        this.ctx.strokeRect(this.x - 2, this.y - 2, this.width + 4, this.height + 4);
+        this.ctx.globalAlpha = 0.3;
+        this.ctx.fillStyle = "#FFC71F";
+        this.ctx.fillRect(this.x - 2, this.y - 2, this.width + 4, this.height + 4);
+        this.ctx.globalAlpha = 1;
       }
+      this.ctx.drawImage(this.image,this.x,this.y,this.width,this.height);
     }
 
     cursorWithin(cursorPos) {
@@ -111,7 +113,7 @@
       this.time = time;
       this.ctx = ctx;
 
-      setInterval(() => {
+      this.timer = setInterval(() => {
         this.time -= 1;
       }, 1000);
     }
@@ -141,22 +143,35 @@
    */
   function init() {
     let canvas = id('gameboard');
-    canvas.width = WIDTH;
-    canvas.height = HEIGHT;
+    canvas.width = WIDTH * 2;
+    canvas.height = HEIGHT * 2;
+    canvas.style.width = "720px";
+    canvas.style.height = "480px";
 
     if (canvas.getContext) {
+      canvas.getContext('2d').scale(2,2);
       var ctx = canvas.getContext('2d');
+      
       let isPaused = false;
       // drawing code here
       const player = new Player(50, 50, 'images/player.png', ctx);
       const computer = new Place(100, 100, 75, 50, "computerScreen", 'images/computer.png', ctx);
       const ballot = new Place(200, 100, 50, 80, "ballotBox", 'images/ballot_box.png', ctx);
       const research = new Place(300, 100, 50, 80, "researchTask", 'images/books.png', ctx);
-      const countdown = new Countdown(190, ctx);
+      const countdown = new Countdown(60, ctx);
       places = [computer, ballot, research];
-      setInterval(() => {
+      let draw = setInterval(() => {
         if (!isPaused) {
           if (countdown.time == 0) {
+            ctx.globalAlpha = 0.2;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.globalAlpha = 1;
+            ctx.font = "30px Georgia";
+            ctx.fillStyle = "black";
+            ctx.textAlign = "left";
+            ctx.fillText("GAME OVER", 360, 240);
+            clearInterval(countdown.timer);
+            clearInterval(draw);
             // game over
           } else {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
