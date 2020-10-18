@@ -18,12 +18,13 @@
     id("vote-form").addEventListener("submit", vote);
     id("envelope").addEventListener("dragstart", dragEnvelope);
     id("envelope").addEventListener("dragend", dragEnd);
+    id("mail-box").addEventListener("dragover", dragOver);
   }
 
   function vote(evnt) {
     evnt.preventDefault();
     id("choose-candidate").classList.add("hidden");
-    id("drag-and-drop").classList.remove("hidden");
+    id("ballot").classList.remove("hidden");
   }
 
   function dragEnvelope(evnt) {
@@ -32,6 +33,10 @@
   }
 
   function dragEnd(evnt) {
+    evnt.target.classList.remove("drag");
+  }
+
+  function dragOver(evnt) {
     evnt.target.classList.remove("drag");
   }
 
